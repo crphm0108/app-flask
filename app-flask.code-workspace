@@ -1,0 +1,147 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    // 標準設定
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.formatOnSave": true,
+    "files.exclude": {
+      "**/.git": true,
+      "**/.svn": true,
+      "**/.hg": true,
+      "**/CVS": true,
+      "**/.DS_Store": true,
+      "**/Thumbs.db": true,
+      "**/__pycache__": true,
+      "**/.mypy_cache": true,
+      "**/.pytest_cache": true,
+      "**/.python-version": true,
+      "**/.venv": true
+    },
+    // Prettier設定
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "prettier.enable": true,
+    // Shortcuts設定
+    "shortcuts.buttons": [
+      "terminal , workbench.action.terminal.toggleTerminal , ターミナル起動",
+      "beaker , workbench.action.tasks.runTask , タスク実行",
+      "file-binary , workbench.action.tasks.build , ビルド実行",
+      "telescope , workbench.action.showCommands , コマンドパネル"
+    ],
+    // Python共通設定
+    "[python]": {
+      "editor.tabSize": 4,
+      "editor.defaultFormatter": null,
+      "editor.formatOnPaste": false,
+      "editor.formatOnType": false
+    },
+    "python.pythonPath": "${workspaceFolder}/.venv/bin/python",
+    "python.envFile": "${workspaceFolder}/.env",
+    "python.linting.enabled": true,
+    "python.linting.lintOnSave": true,
+    "python.linting.pylintEnabled": false,
+    "python.linting.pycodestyleEnabled": false,
+    "python.linting.flake8Enabled": true,
+    "python.linting.flake8Args": [],
+    "python.linting.mypyEnabled": false,
+    "python.linting.mypyArgs": [],
+    "python.formatting.provider": "black",
+    "python.formatting.blackArgs": ["--line-length", "79"],
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+    },
+    "python.testing.unittestEnabled": false,
+    "python.testing.nosetestsEnabled": false,
+    "python.testing.pytestEnabled": true,
+    "python.testing.pytestArgs": ["-vv", "--show-capture=all", "tests"],
+    "autoDocstring.docstringFormat": "google"
+  },
+  "launch": {
+    "configurations": [
+      {
+        "name": "flask run",
+        "type": "python",
+        "request": "launch",
+        "module": "flask",
+        "args": ["run"]
+      },
+      {
+        "name": "GAE(Attach)",
+        "type": "python",
+        "request": "attach",
+        "localRoot": "${workspaceFolder}",
+        "remoteRoot": "${workspaceFolder}",
+        "port": 8080,
+        "secret": "gae",
+        "host": "0.0.0.0",
+        "preLaunchTask": "python"
+      }
+    ],
+    "compounds": []
+  },
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "dev_appserver",
+        "command": "python",
+        "type": "process",
+        "presentation": {
+          "reveal": "always"
+        },
+        "args": [
+          "/usr/bin/dev_appserver.py",
+          "${workspaceFolder}/app.yaml",
+          "--automatic_restart=no",
+          "--max_module_instances=default:1",
+          "--host=localhost",
+          "--admin_host=localhost",
+          "--support_datastore_emulator=False"
+        ]
+      }
+    ]
+  },
+  "extensions": {
+    "recommendations": [
+      "pkief.material-icon-theme",
+      "ms-ceintl.vscode-language-pack-ja",
+      "visualstudioexptteam.vscodeintellicode",
+      "esbenp.prettier-vscode",
+      "eamodio.gitlens",
+      "mhutchie.git-graph",
+      "gizak.shortcuts",
+      "gruntfuggly.todo-tree",
+      "mechatroner.rainbow-csv",
+      "jebbs.plantuml",
+      "42crunch.vscode-openapi",
+      "atif.vs-redoc-viewer",
+      "hediet.vscode-drawio",
+      "ms-azuretools.vscode-docker",
+      "mtxr.sqltools",
+      "mongodb.mongodb-vscode",
+      "shardulm94.trailing-spaces",
+      "mosapride.zenkaku",
+      "oderwat.indent-rainbow",
+      "naumovs.color-highlight",
+      "christian-kohler.path-intellisense",
+      "yzhang.markdown-all-in-one",
+      "yzane.markdown-pdf",
+      "shd101wyy.markdown-preview-enhanced",
+      "marp-team.marp-vscode",
+      "abusaidm.html-snippets",
+      "redhat.vscode-xml",
+      "ecmel.vscode-html-css",
+      "formulahendry.auto-close-tag",
+      "formulahendry.auto-rename-tag",
+      "ms-python.python",
+      "njpwerner.autodocstring",
+      "eg2.vscode-npm-script",
+      "christian-kohler.npm-intellisense"
+    ],
+    "unwantedRecommendations": []
+  }
+}
